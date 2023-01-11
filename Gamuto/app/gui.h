@@ -5,8 +5,8 @@
 
 namespace gui
 {
-	constexpr int WIDTH = 500;
-	constexpr int HEIGHT = 300;
+	constexpr int WIDTH = 600;
+	constexpr int HEIGHT = 400;
 
 	inline bool exit = true;
 

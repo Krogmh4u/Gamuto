@@ -8,18 +8,9 @@ C:\Users\pepe5\Documents\Gamuto\Gamuto\app\matrixes.hpp(28,46): warning C4305: '
 C:\Users\pepe5\Documents\Gamuto\Gamuto\app\matrixes.hpp(32,45): warning C4305: 'initialisation' : troncation de 'double' à 'const float'
 C:\Users\pepe5\Documents\Gamuto\Gamuto\app\matrixes.hpp(36,47): warning C4305: 'initialisation' : troncation de 'double' à 'const float'
 C:\Users\pepe5\Documents\Gamuto\Gamuto\app\matrixes.hpp(40,46): warning C4305: 'initialisation' : troncation de 'double' à 'const float'
-  main.cpp
-C:\Users\pepe5\Documents\Gamuto\Gamuto\app\matrixes.hpp(8,43): warning C4305: 'initialisation' : troncation de 'double' à 'const float'
-C:\Users\pepe5\Documents\Gamuto\Gamuto\app\matrixes.hpp(12,47): warning C4305: 'initialisation' : troncation de 'double' à 'const float'
-C:\Users\pepe5\Documents\Gamuto\Gamuto\app\matrixes.hpp(16,47): warning C4305: 'initialisation' : troncation de 'double' à 'const float'
-C:\Users\pepe5\Documents\Gamuto\Gamuto\app\matrixes.hpp(20,46): warning C4305: 'initialisation' : troncation de 'double' à 'const float'
-C:\Users\pepe5\Documents\Gamuto\Gamuto\app\matrixes.hpp(24,46): warning C4305: 'initialisation' : troncation de 'double' à 'const float'
-C:\Users\pepe5\Documents\Gamuto\Gamuto\app\matrixes.hpp(28,46): warning C4305: 'initialisation' : troncation de 'double' à 'const float'
-C:\Users\pepe5\Documents\Gamuto\Gamuto\app\matrixes.hpp(32,45): warning C4305: 'initialisation' : troncation de 'double' à 'const float'
-C:\Users\pepe5\Documents\Gamuto\Gamuto\app\matrixes.hpp(36,47): warning C4305: 'initialisation' : troncation de 'double' à 'const float'
-C:\Users\pepe5\Documents\Gamuto\Gamuto\app\matrixes.hpp(40,46): warning C4305: 'initialisation' : troncation de 'double' à 'const float'
+C:\Users\pepe5\Documents\Gamuto\Gamuto\app\converter.h(66,22): warning C4018: '<' : incompatibilité signed/unsigned
   Génération de code en cours
-  5 of 1584 functions ( 0.3%) were compiled, the rest were copied from previous compilation.
+  2 of 1796 functions ( 0.1%) were compiled, the rest were copied from previous compilation.
     0 functions were new in current compilation
     25 functions had inline decision re-evaluated but remain unchanged
   Fin de la génération du code

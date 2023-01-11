@@ -1,6 +1,13 @@
 #pragma once
 
 #include "matrixes.hpp"
+#include "working_spaces.h"
+
+#include <vector>
+#include <string>
+#include <filesystem>
+namespace fs = std::filesystem;
+
 
 const int gamutSize = 9;
 static const char* gamutKeys[gamutSize]{
@@ -31,7 +38,24 @@ namespace converter
 	static XYZColor oColor = { .0f, .0f, .0f };
 	static float gamutMatrix[9];
 
+	inline std::vector<WorkingSpace> WorkingSpaces;
+    inline WorkingSpace* CurrentWorkingSpace = nullptr;
+
 	static float OutputColorScheme[3] = { .0f, .0f, .0f };
+
+	inline void Init()
+	{
+		WorkingSpace sRgb, adobe, apple, best, beta, colormatch, ektaspace, palsecam, smtpec;
+		sRgb.LoadFromFile("srgb.ws"); adobe.LoadFromFile("adobe.ws"); beta.LoadFromFile("beta.ws");
+		apple.LoadFromFile("apple.ws"); best.LoadFromFile("best.ws"); colormatch.LoadFromFile("colormatch.ws");
+		ektaspace.LoadFromFile("ektaspace.ws"); palsecam.LoadFromFile("palsecam.ws"); smtpec.LoadFromFile("smtpec.ws");
+
+		WorkingSpaces.push_back(sRgb); WorkingSpaces.push_back(adobe); WorkingSpaces.push_back(beta);
+		WorkingSpaces.push_back(apple); WorkingSpaces.push_back(best); WorkingSpaces.push_back(colormatch);
+		WorkingSpaces.push_back(ektaspace); WorkingSpaces.push_back(palsecam); WorkingSpaces.push_back(smtpec);
+
+		CurrentWorkingSpace = &WorkingSpaces[0];
+	}
 	
 	inline void ComputeEntry()
 	{
@@ -39,33 +63,12 @@ namespace converter
 		OutputColorScheme[1] = static_cast<float>(iColor.G) / 255;
 		OutputColorScheme[2] = static_cast<float>(iColor.B) / 255;
 
-		if (gamutKeys[gamutKeyIndex] == "sRgb")
-			for (auto i = 0; i < 9; ++i)
-				gamutMatrix[i] = TrMatrixes::sRgb[i];
-		else if(gamutKeys[gamutKeyIndex] == "Adobe Rgb")
-			for (auto i = 0; i < 9; ++i)
-				gamutMatrix[i] = TrMatrixes::adobeRgb[i];
-		else if (gamutKeys[gamutKeyIndex] == "Apple Rgb")
-			for (auto i = 0; i < 9; ++i)
-				gamutMatrix[i] = TrMatrixes::appleRgb[i];
-		else if (gamutKeys[gamutKeyIndex] == "Best Rgb")
-			for (auto i = 0; i < 9; ++i)
-				gamutMatrix[i] = TrMatrixes::bestRgb[i];
-		else if (gamutKeys[gamutKeyIndex] == "Beta Rgb")
-			for (auto i = 0; i < 9; ++i)
-				gamutMatrix[i] = TrMatrixes::betaRgb[i];
-		else if (gamutKeys[gamutKeyIndex] == "ColorMatch RGB")
-			for (auto i = 0; i < 9; ++i)
-				gamutMatrix[i] = TrMatrixes::colorMatchRgb[i];
-		else if (gamutKeys[gamutKeyIndex] == "Ekta Space PS5")
-			for (auto i = 0; i < 9; ++i)
-				gamutMatrix[i] = TrMatrixes::ektaSpaceRgb[i];
-		else if (gamutKeys[gamutKeyIndex] == "PAL/SECAM RGB")
-			for (auto i = 0; i < 9; ++i)
-				gamutMatrix[i] = TrMatrixes::palSecamRgb[i];
-		else if (gamutKeys[gamutKeyIndex] == "SMPTE-C RGB")
-			for (auto i = 0; i < 9; ++i)
-				gamutMatrix[i] = TrMatrixes::smpte_cRgb[i];
+		for (auto i = 0; i < WorkingSpaces.size(); ++i)
+			if (gamutKeyIndex == WorkingSpaces[i].GetWS().Id)
+				CurrentWorkingSpace = &WorkingSpaces[i];
+
+		for (auto i = 0; i < 9; ++i)
+			gamutMatrix[i] = CurrentWorkingSpace->GetWS().RGB2XYZ_Matrix[i];
 	}
 
 	inline void ComputeOutput()
