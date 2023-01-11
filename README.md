@@ -1,9 +1,8 @@
 # Gamuto
 RGB to XYZ converter
-(WIP - Incorrect values)
 
 <hr>
 <p align="center">
-    <img src="previews/preview.png" />
+    <img src="previews/prev2.png" />
 </p>
 
