@@ -3,4 +3,7 @@ RGB to XYZ converter
 (WIP - Incorrect values)
 
 <hr>
-<img align="center" src="previews/preview.png" />
+<p align="center">
+    <img src="previews/preview.png" />
+</p>
+
